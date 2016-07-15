@@ -15,4 +15,16 @@ describe Sort do
     end
   end
 
+
+  describe "#merge_sort" do
+    it "merge sorts the array" do 
+      expect(sorts.merge_sort(sorts.arr)).to eq([1,2,3,5,7])
+    end
+  end
+
+
+
+
+
+
 end
