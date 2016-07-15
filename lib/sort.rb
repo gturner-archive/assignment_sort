@@ -41,7 +41,7 @@ class Sort
 
   def merge_sort(arr)
     return arr if arr.length <= 1
-    left_end = right_begin = arr.length/2 
+    left_end = right_begin = arr.length/2
     arr.length.even? ? left_end -= 1 : right_begin += 1
     left = arr[0..left_end]
     right = arr[right_begin...arr.length]
@@ -54,13 +54,21 @@ class Sort
 
   def merge(left, right)
     new_arr = []
-    until left.empty? || right.empty?
-      right[0] > left[0] ? new_arr << left.shift : new_arr << right.shift
+    l_start = 0
+    r_start = 0
+    until l_start >= left.length || r_start >= right.length
+      if right[r_start] > left[l_start]
+        new_arr << left[l_start]
+        l_start += 1
+      else
+        new_arr << right[r_start]
+        r_start += 1
+      end
     end
-    if left.empty?
-      right.each { |item| new_arr << item }
+    if l_start >= left.length
+      (r_start...right.length).each { |index| new_arr << right[index] }
     else
-      left.each { |item| new_arr << item }
+      (l_start...left.length).each { |index| new_arr << left[index] }
     end
     new_arr
   end
