@@ -17,8 +17,15 @@ describe Sort do
 
 
   describe "#merge_sort" do
-    it "merge sorts the array" do 
+    it "merge sorts the array" do
       expect(sorts.merge_sort(sorts.arr)).to eq([1,2,3,5,7])
+      expect(sorts.merge_sort([1,5,4,7,8,9,14,5])).to eq([1,2,3,5,7])
+    end
+  end
+
+  describe "#merge" do
+    it "merges two arrays" do
+      expect(sorts.merge([1],[2])).to eq([1,2])
     end
   end
 
